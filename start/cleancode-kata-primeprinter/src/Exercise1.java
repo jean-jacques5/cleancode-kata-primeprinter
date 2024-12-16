@@ -1,0 +1,30 @@
+import java.time.LocalDate;
+
+public class Exercise1 {
+
+    private LocalDate expirationDate;
+    private Boolean approvedForConsumption;
+    private Integer inspectorId;
+
+    public Exercise1(LocalDate expirationDate, Boolean approvedForConsumption, Integer inspectorId) {
+        this.expirationDate = expirationDate;
+        this.approvedForConsumption = approvedForConsumption;
+        this.inspectorId = inspectorId;
+    }
+
+    public boolean isEdible() {
+        return isNotExpired() && isApproved() && hasInspector();
+    }
+
+    private boolean isNotExpired() {
+        return this.expirationDate.isAfter(LocalDate.now());
+    }
+
+    private boolean isApproved() {
+        return Boolean.TRUE.equals(this.approvedForConsumption);
+    }
+
+    private boolean hasInspector() {
+        return this.inspectorId != null;
+    }
+}
